@@ -5,7 +5,7 @@ set $mod Mod4
 
 # Set your terminal emulator, web browser, and file manager
 set $term kitty
-set $browser firefox
+set $browser zen-browser
 set $filemanager nautilus
 
 # Start a terminal with $mod+Return
@@ -78,4 +78,7 @@ output * bg ~/Documents/wallpaper.jpg fill
 default_border none
 gaps inner 10
 gaps outer 10
+
+# Launch wofi with Mod + Space
+bindsym $mod+space exec wofi --show drun --theme ~/.config/wofi/style.css
 
