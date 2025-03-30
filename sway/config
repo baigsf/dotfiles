@@ -1,44 +1,38 @@
-# Basic Sway configuration
-
 # Set the default mod key (Mod4 is usually the "Super" key or "Windows" key)
 set $mod Mod4
 
-# Set your terminal emulator, web browser, and file manager
+# Applications
 set $term kitty
 set $browser zen-browser
-set $filemanager nautilus
 
-# Start a terminal with $mod+Return
+# Keybindings
+## Launch applications
 bindsym $mod+Return exec $term
-
-# Start Firefox with $mod+B
 bindsym $mod+B exec $browser
+bindsym $mod+F exec GTK_THEME=Adwaita-dark nautilus
 
-# Start Nautilus with $mod+E
-bindsym $mod+F exec $filemanager
-
-# Exit Sway with $mod+Shift+E
+## Exit, reload, and kill
 bindsym $mod+Shift+E exit
-
-# Reload the configuration file with $mod+Shift+R
 bindsym $mod+Shift+R reload
+bindsym $mod+Shift+Q kill
 
-# Floating windows toggle with $mod+Shift+Space
+## Window management
+### Focus between windows using arrow keys
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+### Move windows using arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+### Floating windows toggle
 bindsym $mod+Shift+Space floating toggle
 
-# Move focus between windows
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-
-# Move windows
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
-# Workspace management
+## Workspace management
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -48,37 +42,30 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-
-# Switch to the next/previous workspace
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
-# Brightness controls
+## Brightness controls
 bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 
-# Volume controls
+## Volume controls
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
+## Launcher
+bindsym $mod+space exec wofi --show drun --theme ~/.config/wofi/style.css
+
 # Sway Bar Config
 bar {
     position top
-    status_command i3status   
+    status_command i3status
 }
 
-# Quit the currently focused application
-bindsym $mod+Shift+Q kill 
-
-# Set the wallpaper (located in ~/Documents)
+# Appearance
 output * bg ~/Documents/wallpaper.jpg fill
-
-# Remove borders and add gaps
 default_border none
-gaps inner 10
-gaps outer 10
-
-# Launch wofi with Mod + Space
-bindsym $mod+space exec wofi --show drun --theme ~/.config/wofi/style.css
+gaps inner 7
+gaps outer 7
 
