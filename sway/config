@@ -11,7 +11,7 @@ set $filemanager nautilus
 # Start a terminal with $mod+Return
 bindsym $mod+Return exec $term
 
-# Start Firefox with $mod+F
+# Start Firefox with $mod+B
 bindsym $mod+B exec $browser
 
 # Start Nautilus with $mod+E
@@ -44,18 +44,33 @@ bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
 
 # Switch to the next/previous workspace
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
+# Brightness controls
+bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
+# Volume controls
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
 # Sway Bar Config
 bar {
     position top
-    status_command i3status
-} 
+    status_command i3status   
+}
 
- 
+# Quit the currently focused application
+bindsym $mod+Shift+Q kill 
+
 # Set the wallpaper (located in ~/Documents)
 output * bg ~/Documents/wallpaper.jpg fill
 
@@ -63,3 +78,4 @@ output * bg ~/Documents/wallpaper.jpg fill
 default_border none
 gaps inner 10
 gaps outer 10
+

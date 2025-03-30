@@ -1,0 +1,32 @@
+###############################################################################
+# ThinkPad T480 i3status config
+# see "man i3status" for documentation.
+#
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+###############################################################################
+
+general {
+    interval         = 1
+    colors           = true
+    color_good       = '#88b090'
+    color_degraded   = '#ccdc90'
+    color_bad        = '#e89393'
+}
+
+order += "battery 0"
+order += "tztime local"
+
+battery 0 {
+    format = "Battery: %percentage"
+    format_down = "Battery: Not Detected"
+    last_full_capacity = true
+    integer_battery_capacity = true
+}
+
+tztime local {
+    format = "%A, %B %e  %I:%M:%S %p"
+}
+
