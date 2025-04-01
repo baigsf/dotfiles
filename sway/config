@@ -59,7 +59,7 @@ bindsym $mod+space exec wofi --show drun --theme ~/.config/wofi/style.css
 
 # Sway Bar Config
 bar {
-    position top
+    position bottom
     status_command i3status
 }
 
@@ -69,3 +69,26 @@ default_border none
 gaps inner 7
 gaps outer 7
 
+input "type:touchpad" {
+    natural_scroll enabled
+}
+
+input "type:mouse" {
+    natural_scroll enabled
+}
+
+# Move focused window to workspace 1
+bindsym $mod+Shift+1 move container to workspace 1
+
+# Move focused window to workspace 2
+bindsym $mod+Shift+2 move container to workspace 2
+
+# Move focused window to workspace 3
+bindsym $mod+Shift+3 move container to workspace 3
+
+# Move focused window to workspace 4
+bindsym $mod+Shift+4 move container to workspace 4
+
+# Move focused window to workspace 5
+bindsym $mod+Shift+5 move container to workspace 5
+ 
