@@ -91,4 +91,11 @@ bindsym $mod+Shift+4 move container to workspace 4
 
 # Move focused window to workspace 5
 bindsym $mod+Shift+5 move container to workspace 5
- 
+
+# Shrink focused window to the left (Mod + Shift + O)
+bindsym $mod+Shift+o resize shrink width 20 px
+
+# Grow focused window to the right (Mod + Shift + P)
+bindsym $mod+Shift+p resize grow width 20 px
+
+
