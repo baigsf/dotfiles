@@ -16,3 +16,13 @@ vim.opt.clipboard = "unnamedplus" -- use system clipboard
 -- Keymaps for quitting
 vim.keymap.set("n", "ZZ", ":wq<CR>", { silent = true })
 vim.keymap.set("n", "ZQ", ":q!<CR>", { silent = true })
+
+
+-- apply the colorscheme
+vim.cmd.colorscheme "catppuccin"
+
+require("catppuccin").setup({
+  flavour = "mocha", -- latte, frappe, macchiato, mocha
+  transparent_background = true, -- 👈 this keeps your terminal’s background
+})
+vim.cmd.colorscheme "catppuccin"
