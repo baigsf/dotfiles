@@ -1,0 +1,52 @@
+{
+  "logo": {
+    "source": "macos",
+    "padding": { "right": 2 },
+    "color": {
+      "1": "cyan",
+      "2": "cyan",
+      "3": "cyan",
+      "4": "cyan",
+      "5": "cyan",
+      "6": "cyan"
+    }
+  },
+
+  "display": {
+    "separator": ": ",
+    "color": {
+      "keys": "white",
+      "values": null
+    }
+  },
+
+  "modules": [
+    {
+      "type": "custom",
+       "format": "                    \u001b[36m(Overlord)@\u001b[36m(Albion-Mac)\u001b[0m"
+    },
+
+    {
+      "type": "custom",
+      "format": "\u001b[97m┌────────────────────────── Info ───────────────────────────┐"
+    },
+
+    { "type": "os" },
+    { "type": "host" },
+    { "type": "kernel" },
+    { "type": "uptime" },
+    { "type": "packages", "managers": ["brew"] },
+    { "type": "cpu" },
+    {
+      "type": "memory",
+      "unit": "MiB",
+      "showUsed": true,
+      "showTotal": true
+    },
+
+    {
+      "type": "custom",
+      "format": "\u001b[97m└────────────────────────────────────────────────────────────┘"
+    }
+  ]
+}
