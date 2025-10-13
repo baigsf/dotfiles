@@ -17,13 +17,17 @@
     "color": {
       "keys": "white",
       "values": null
+    },
+    "key": {
+      "paddingLeft": 3,
+      "width": 0
     }
   },
 
   "modules": [
     {
       "type": "custom",
-       "format": "                    \u001b[36m(Overlord)@\u001b[36m(Albion-Mac)\u001b[0m"
+      "format": "                    \u001b[36m(Overlord)@\u001b[36m(Albion-Mac)\u001b[0m"
     },
 
     {
@@ -53,9 +57,6 @@
       "type": "colors",
       "paddingLeft": 23,
       "symbol": "circle"
-
-
     }
-
   ]
 }
