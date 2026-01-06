@@ -9,6 +9,7 @@ alias lt='eza -T --icons --color=always --group-directories-first'
 alias neofetch='fastfetch'
 alias cat="bat"
 alias vf='nvim "$(fzf --preview "bat --color=always {}")"'
+alias cd='z'
 
 ts() {
   case "$1" in
@@ -28,5 +29,7 @@ source <(fzf --zsh)
 # STARSHIP
 eval "$(starship init zsh)"
 
+# zoxide
+eval "$(zoxide init zsh)"
 
-export PATH="/Users/saifbaig/.local/bin:$PATH"
+
