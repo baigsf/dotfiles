@@ -12,7 +12,7 @@ vim.cmd("highlight NonText ctermbg=NONE guibg=NONE")
 vim.opt.relativenumber = false
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
-
+vim.opt.virtualedit = "onemore"
 -- Keymaps for quitting
 vim.keymap.set("n", "ZZ", ":wq<CR>", { silent = true })
 vim.keymap.set("n", "ZQ", ":q!<CR>", { silent = true })
