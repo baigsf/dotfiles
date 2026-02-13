@@ -1,4 +1,4 @@
--- init.lua
+-- init.lua for GlassBetter theme
 
 -- Line numbers
 vim.opt.number = true
@@ -13,15 +13,10 @@ vim.opt.relativenumber = false
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.virtualedit = "onemore"
+
 -- Keymaps for quitting
 vim.keymap.set("n", "ZZ", ":wq<CR>", { silent = true })
 vim.keymap.set("n", "ZQ", ":q!<CR>", { silent = true })
 
--- Gruvbox setup
-require("gruvbox").setup({
-  -- This is the key setting for a transparent background
-  transparent_mode = "hard",
-})
-
--- Apply the colorscheme
-vim.cmd.colorscheme "gruvbox"
+-- Apply the GlassBetter colorscheme
+vim.cmd.colorscheme "gruvpink"
