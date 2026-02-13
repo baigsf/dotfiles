@@ -17,7 +17,7 @@ cp -r mac/nvim mac/bat mac/fastfetch mac/sketchybar ~/.config/ 2>/dev/null && cp
 
 ```bash
 # Copy themes to ~/.config/omarchy/themes/
-mkdir -p ~/.config/omarchy/themes && cp -r linux/omarchy-theme/* ~/.config/omarchy/themes/
+cp -r linux/omarchy-theme/ash linux/omarchy-theme/glassbetter linux/omarchy-theme/inkypinky ~/.config/omarchy/themes/
 ```
 
 ## License
