@@ -98,13 +98,13 @@
 		<key>Alpha Component</key>
 		<integer>1</integer>
 		<key>Blue Component</key>
-		<real>0.7843137254901961</real>
+		<real>0.9607843137254902</real>
 		<key>Color Space</key>
 		<string>sRGB</string>
 		<key>Green Component</key>
-		<real>0.7843137254901961</real>
+		<real>0.9607843137254902</real>
 		<key>Red Component</key>
-		<real>0.7843137254901961</real>
+		<real>0.9607843137254902</real>
 	</dict>
 	<key>Ansi 2 Color</key>
 	<dict>
@@ -176,13 +176,13 @@
 		<key>Alpha Component</key>
 		<integer>1</integer>
 		<key>Blue Component</key>
-		<real>0.6549019607843137</real>
+		<real>0.8156862745098039</real>
 		<key>Color Space</key>
 		<string>sRGB</string>
 		<key>Green Component</key>
-		<real>0.6352941176470588</real>
+		<real>0.8156862745098039</real>
 		<key>Red Component</key>
-		<real>0.6313725490196078</real>
+		<real>0.8156862745098039</real>
 	</dict>
 	<key>Ansi 8 Color</key>
 	<dict>
@@ -228,13 +228,13 @@
 		<key>Alpha Component</key>
 		<integer>1</integer>
 		<key>Blue Component</key>
-		<real>0.7843137254901961</real>
+		<real>0.9607843137254902</real>
 		<key>Color Space</key>
 		<string>sRGB</string>
 		<key>Green Component</key>
-		<real>0.7843137254901961</real>
+		<real>0.9607843137254902</real>
 		<key>Red Component</key>
-		<real>0.7843137254901961</real>
+		<real>0.9607843137254902</real>
 	</dict>
 	<key>Cursor Color</key>
 	<dict>
@@ -280,13 +280,13 @@
 		<key>Alpha Component</key>
 		<integer>1</integer>
 		<key>Blue Component</key>
-		<real>0.7843137254901961</real>
+		<real>0.9098039215686274</real>
 		<key>Color Space</key>
 		<string>sRGB</string>
 		<key>Green Component</key>
-		<real>0.7843137254901961</real>
+		<real>0.9098039215686274</real>
 		<key>Red Component</key>
-		<real>0.7843137254901961</real>
+		<real>0.9098039215686274</real>
 	</dict>
 	<key>Link Color</key>
 	<dict>
