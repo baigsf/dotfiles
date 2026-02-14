@@ -81,6 +81,9 @@ vim.keymap.set("n", "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hls
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
 vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 
+-- Open dashboard
+vim.keymap.set("n", "<leader>h", "<cmd>Alpha<cr>", { desc = "Go to Dashboard" })
+
 -- Open file browser (netrw)
 vim.keymap.set("n", "<leader>e", "<cmd>Explore<cr>", { desc = "Open file browser" })
 
@@ -144,6 +147,7 @@ require("lazy").setup({
         dashboard.button("r", "  Recent files", ":Telescope oldfiles<CR>"),
         dashboard.button("g", "  Find text", ":Telescope live_grep<CR>"),
         dashboard.button("e", "  File browser", ":Explore<CR>"),
+        dashboard.button("l", "  Lazy", ":Lazy<CR>"),
         dashboard.button("c", "  Config", ":e $MYVIMRC <CR>"),
         dashboard.button("q", "  Quit", ":qa<CR>"),
       }
@@ -332,64 +336,35 @@ require("lazy").setup({
     end,
   },
 
-  -- Mason-LSPConfig bridge
-  {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls",
-          "pyright",
-          "ts_ls",
-          "rust_analyzer",
-          "gopls",
-          "clangd",
-          "jsonls",
-          "html",
-          "cssls",
-          "bashls",
-        },
-        automatic_installation = true,
-      })
-    end,
-  },
-
-  -- LSP Config
+  -- LSP Config (Neovim 0.11+ native API)
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
     },
     config = function()
-      local lspconfig = require("lspconfig")
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      
-      -- Add cmp capabilities if nvim-cmp is available
-      local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-      if has_cmp then
-        capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
-      end
-      
       -- LSP keymaps
-      local on_attach = function(client, bufnr)
-        local opts = { buffer = bufnr, silent = true }
-        
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
-        vim.keymap.set("n", "gr", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "Go to references" }))
-        vim.keymap.set("n", "gI", vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "Go to implementation" }))
-        vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, vim.tbl_extend("force", opts, { desc = "Go to type definition" }))
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover documentation" }))
-        vim.keymap.set("n", "<leader>lk", vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { desc = "Signature help" }))
-        vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename" }))
-        vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Code action" }))
-        vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({ async = true }) end, vim.tbl_extend("force", opts, { desc = "Format" }))
-        vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, vim.tbl_extend("force", opts, { desc = "Show diagnostic" }))
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, vim.tbl_extend("force", opts, { desc = "Previous diagnostic" }))
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, vim.tbl_extend("force", opts, { desc = "Next diagnostic" }))
-      end
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+        callback = function(args)
+          local bufnr = args.buf
+          local opts = { buffer = bufnr, silent = true }
+          
+          vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
+          vim.keymap.set("n", "gr", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "Go to references" }))
+          vim.keymap.set("n", "gI", vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "Go to implementation" }))
+          vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, vim.tbl_extend("force", opts, { desc = "Go to type definition" }))
+          vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover documentation" }))
+          vim.keymap.set("n", "<leader>lk", vim.lsp.buf.signature_help, vim.tbl_extend("force", opts, { desc = "Signature help" }))
+          vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename" }))
+          vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Code action" }))
+          vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({ async = true }) end, vim.tbl_extend("force", opts, { desc = "Format" }))
+          vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, vim.tbl_extend("force", opts, { desc = "Show diagnostic" }))
+          vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, vim.tbl_extend("force", opts, { desc = "Previous diagnostic" }))
+          vim.keymap.set("n", "]d", vim.diagnostic.goto_next, vim.tbl_extend("force", opts, { desc = "Next diagnostic" }))
+        end,
+      })
       
       -- Diagnostic configuration
       vim.diagnostic.config({
@@ -414,44 +389,43 @@ require("lazy").setup({
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       end
       
-      -- Default LSP server options
-      local default_opts = {
-        on_attach = on_attach,
-        capabilities = capabilities,
-      }
+      -- Configure servers using vim.lsp.config (Neovim 0.11+)
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
       
-      -- Configure servers
-      local servers = {
-        lua_ls = {
-          settings = {
-            Lua = {
-              diagnostics = {
-                globals = { "vim" },
-              },
-              workspace = {
-                library = vim.api.nvim_get_runtime_file("", true),
-                checkThirdParty = false,
-              },
-              telemetry = { enable = false },
+      -- Add cmp capabilities if nvim-cmp is available
+      local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+      if has_cmp then
+        capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+      end
+      
+      -- Configure Lua language server
+      vim.lsp.config("lua_ls", {
+        capabilities = capabilities,
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" },
             },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file("", true),
+              checkThirdParty = false,
+            },
+            telemetry = { enable = false },
           },
         },
-        pyright = {},
-        ts_ls = {},
-        rust_analyzer = {},
-        gopls = {},
-        clangd = {},
-        jsonls = {},
-        html = {},
-        cssls = {},
-        bashls = {},
-      }
+      })
       
-      -- Setup all servers
-      for server, opts in pairs(servers) do
-        local server_opts = vim.tbl_deep_extend("force", default_opts, opts)
-        lspconfig[server].setup(server_opts)
+      -- Configure other servers with default capabilities
+      local servers = { "pyright", "ts_ls", "rust_analyzer", "gopls", "clangd", "jsonls", "html", "cssls", "bashls" }
+      for _, server in ipairs(servers) do
+        vim.lsp.config(server, {
+          capabilities = capabilities,
+        })
+        vim.lsp.enable(server)
       end
+      
+      -- Enable lua_ls
+      vim.lsp.enable("lua_ls")
     end,
   },
 
