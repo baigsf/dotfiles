@@ -7,7 +7,7 @@
 
 -- Line numbers
 vim.opt.number = true
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 
 -- Use terminal's background (transparent)
 vim.opt.termguicolors = true
