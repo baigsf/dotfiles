@@ -38,6 +38,7 @@ return {
 			},
 			custom_highlights = function(colors)
 				return {
+					LineNr = { fg = "#ffffff" },
 					NormalFloat = { bg = "NONE", fg = colors.text },
 					FloatBorder = { bg = "NONE", fg = colors.pink },
 					FloatTitle = { bg = "NONE", fg = colors.pink },
