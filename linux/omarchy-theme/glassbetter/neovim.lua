@@ -1,7 +1,7 @@
 return {
   {
-    "gruvpink/nvim",
-    name = "gruvpink",
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
     opts = {
       flavour = "mocha",
@@ -91,6 +91,6 @@ return {
   },
   {
     "LazyVim/LazyVim",
-    opts = { colorscheme = "gruvpink" },
+    opts = { colorscheme = "catppuccin" },
   },
 }
