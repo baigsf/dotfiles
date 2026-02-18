@@ -74,6 +74,16 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
+-- Quick exit from insert mode with 'ee'
+vim.keymap.set("i", "ee", "<Esc>", { desc = "Exit insert mode" })
+
+
+
+-- Ctrl+Z for undo (works in all modes)
+vim.keymap.set("n", "<C-z>", "u", { desc = "Undo" })
+vim.keymap.set("i", "<C-z>", "<C-o>u", { desc = "Undo" })
+vim.keymap.set("v", "<C-z>", "<Esc>u", { desc = "Undo" })
+
 -- Clear search with <esc>
 vim.keymap.set("n", "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
@@ -117,13 +127,6 @@ require("lazy").setup({
   {
     "goolord/alpha-nvim",
     event = "VimEnter",
-    cond = function()
-      -- Don't show dashboard when opening a directory
-      local argv = vim.fn.argv()
-      if #argv == 0 then return true end
-      local stat = vim.loop.fs_stat(argv[1])
-      return not (stat and stat.type == "directory")
-    end,
     config = function()
       local dashboard = require("alpha.themes.dashboard")
       
@@ -153,6 +156,16 @@ require("lazy").setup({
       }
       
       dashboard.opts.opts.noautocmd = true
+      
+      -- Don't auto-show dashboard when opening a directory
+      local argv = vim.fn.argv()
+      if #argv > 0 then
+        local stat = vim.loop.fs_stat(argv[1])
+        if stat and stat.type == "directory" then
+          dashboard.opts.opts.autostart = false
+        end
+      end
+      
       require("alpha").setup(dashboard.opts)
     end,
   },
@@ -188,6 +201,9 @@ require("lazy").setup({
     config = function()
       require("which-key").setup({
         preset = "modern",
+        defer = function(ctx)
+          return ctx.mode == "v" or ctx.mode == "V" or ctx.mode == "<C-V>"
+        end,
       })
       
       -- Register keymaps
@@ -376,18 +392,18 @@ require("lazy").setup({
           border = "rounded",
           source = "always",
         },
-        signs = true,
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.HINT] = "",
+            [vim.diagnostic.severity.INFO] = "",
+          },
+        },
         underline = true,
         update_in_insert = false,
         severity_sort = true,
       })
-      
-      -- Setup diagnostic signs
-      local signs = { Error = "", Warn = "", Hint = "", Info = "" }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-      end
       
       -- Configure servers using vim.lsp.config (Neovim 0.11+)
       local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -635,7 +651,7 @@ require("lazy").setup({
   -- ============================================
   -- UTILITIES
   -- ============================================
-  
+
   -- Autopairs
   {
     "windwp/nvim-autopairs",
