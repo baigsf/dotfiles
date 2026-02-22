@@ -73,8 +73,8 @@ local function setup()
   set_highlight("Search", { fg = colors.bg, bg = colors.yellow })
   set_highlight("IncSearch", { fg = colors.bg, bg = colors.pink })
   set_highlight("Substitute", { fg = colors.bg, bg = colors.pink })
-  set_highlight("Visual", { bg = colors.surface1 })
-  set_highlight("VisualNOS", { bg = colors.surface1 })
+  set_highlight("Visual", { bg = "#3d2a4d", bold = true })
+  set_highlight("VisualNOS", { bg = "#3d2a4d", bold = true })
   
   -- Messages
   set_highlight("ErrorMsg", { fg = colors.pink, bold = true })
