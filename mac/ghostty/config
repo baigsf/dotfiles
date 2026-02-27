@@ -1,0 +1,81 @@
+# --- Window & Layout ---
+# macos-titlebar-style = hidden
+window-padding-x = 15
+window-padding-y = 15
+
+# --- Blur & Opacity ---
+background-opacity = 0.5 
+background-blur-radius = 35
+
+# --- Theme Overrides ---
+theme = "" 
+
+# Background & Foreground
+background = #131313
+# Made foreground whiter (was #c8c8c8)
+foreground = #e6e6e6
+
+# Cursor
+cursor-color = #f2aebf
+cursor-text = #13131D
+selection-background = #f2aebf
+selection-foreground = #13131D
+
+# --- Palette ---
+# Black / Background match
+palette = 0=#13131D
+
+# Red (Pink) - Slightly brighter (was #EA90A8)
+palette = 1=#f2aebf
+
+# Green (Blue-ish Grey) - Unchanged
+palette = 2=#a6b2c7
+
+# Yellow (Darker Pink) - Slightly more vibrant (was #D18BA2)
+palette = 3=#e096af
+
+# Blue - Unchanged
+palette = 4=#7c7ca8
+
+# Magenta (Purple) - Slightly brighter (was #9f859f)
+palette = 5=#b093b0
+
+# Cyan - Unchanged
+palette = 6=#919ab7
+
+# White - Brighter (was #a1a2a7)
+palette = 7=#c5c6cb
+
+# --- Bright Variants ---
+# Bright Black
+palette = 8=#434353
+
+# Bright Red (Pink) - Slightly brighter (was #f6bfce)
+palette = 9=#ffd1dd
+
+# Bright Green - Unchanged
+palette = 10=#d1d9e4
+
+# Bright Yellow (Pink) - Slightly brighter (was #e3aebf)
+palette = 11=#f0bccd
+
+# Bright Blue - Unchanged
+palette = 12=#bcbcd4
+
+# Bright Magenta (Purple) - Slightly brighter (was #bfadbf)
+palette = 13=#d1bed1
+
+# Bright Cyan - Unchanged
+palette = 14=#d2d7e3
+
+# Bright White - Pure white (was #c8c8c8)
+palette = 15=#ffffff
+
+# Forces the window size on every startup (Columns x Rows)
+window-width = 207
+window-height = 58
+# Stops Ghostty from remembering the last window size you dragged it to
+window-save-state = never
+
+font-family = "JetBrainsMono Nerd Font Mono"
+font-size = 11
