@@ -714,7 +714,7 @@ require("lazy").setup({
 
 }, {
   -- Lazy.nvim configuration
-  install = { colorscheme = { "gruvpink" } },
+  install = { colorscheme = { "default" } },
   checker = { enabled = true, notify = false },
   performance = {
     rtp = {
@@ -769,9 +769,8 @@ vim.api.nvim_create_autocmd('filetype', {
 -- =============================================================================
 -- SECTION 7: COLORSCHEME
 -- =============================================================================
-
--- Apply colorscheme
-vim.cmd.colorscheme("gruvpink")
+-- Change 'default' to any colorscheme (e.g., 'rose-pine') to use that theme
+vim.cmd.colorscheme("rose-pine") -- use 'rose-pine', 'gruvbox', etc. or 'default' for terminal colors
 
 -- =============================================================================
 -- END OF CONFIGURATION

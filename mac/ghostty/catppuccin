@@ -1,0 +1,49 @@
+# Ghostty Terminal Configuration
+
+# Window & Layout
+window-padding-x = 15
+window-padding-y = 15
+# macos-titlebar-style = hidden
+
+# Background & Opacity
+background-opacity = 0.5
+background-blur-radius = 35
+background = #1e1e2e
+
+# Text Colors
+foreground = #cdd6f4
+
+# Cursor
+cursor-color = #f5e0dc
+cursor-text = #1e1e2e
+
+# Selection
+selection-background = #f5e0dc
+selection-foreground = #1e1e2e
+
+# Color Palette
+palette = 0=#1e1e2e
+palette = 1=#f38ba8
+palette = 2=#a6e3a1
+palette = 3=#f9e2af
+palette = 4=#89b4fa
+palette = 5=#f5c2e7
+palette = 6=#94e2d5
+palette = 7=#bac2de
+palette = 8=#45475a
+palette = 9=#f5c2e7
+palette = 10=#a6e3a1
+palette = 11=#f9e2af
+palette = 12=#89b4fa
+palette = 13=#f5c2e7
+palette = 14=#94e2d5
+palette = 15=#a6adc8
+
+# Window Settings
+window-width = 207
+window-height = 58
+window-save-state = never
+
+# Font
+font-family = "JetBrainsMono Nerd Font Mono"
+font-size = 11
