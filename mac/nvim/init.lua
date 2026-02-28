@@ -74,6 +74,9 @@ vim.g.maplocalleader = " "
 vim.keymap.set("n", "ZZ", ":wq<CR>", { silent = true, desc = "Save and quit" })
 vim.keymap.set("n", "ZQ", ":q!<CR>", { silent = true, desc = "Quit without saving" })
 
+-- Dashboard - works from anywhere
+vim.keymap.set("n", "<leader>h", "<cmd>Alpha<cr>", { desc = "Open dashboard" })
+
 -- Window navigation (Ctrl + h/j/k/l)
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
@@ -95,8 +98,7 @@ vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save file" })
 vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 
 -- Leader commands - openers
-vim.keymap.set("n", "<leader>h", "<cmd>Alpha<cr>", { desc = "Open dashboard" })
-vim.keymap.set("n", "<leader>e", "<cmd>Explore<cr>", { desc = "Open file browser" })
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Open file browser" })
 
 
 -- =============================================================================
@@ -131,7 +133,7 @@ require("lazy").setup({
   -- alpha-nvim: Startup dashboard with ASCII art
   {
     "goolord/alpha-nvim",
-    event = "VimEnter",
+    cmd = "Alpha",
     config = function()
       local dashboard = require("alpha.themes.dashboard")
       
@@ -141,11 +143,11 @@ require("lazy").setup({
         [[                                                                     ]],
         [[       ████ ██████           █████      ██                     ]],
         [[      ███████████             █████                             ]],
-        [[      █████████ ███████████████████ ███   ███████████   ]],
+        [[      █████████  ███████████████████ ███   ███████████   ]],
         [[     █████████  ███    █████████████ █████ ██████████████   ]],
         [[    █████████ ██████████████████████ █████ █████ ████ █████   ]],
-        [[  ███████████ ███    ████████ ██ █████ █████ ████ █████  ]],
-        [[ ██████  █████████████████████ ██ █████████ ████ ██████ ]],
+        [[  ███████████  ███    ████████  ██ █████ █████ ████ █████  ]],
+        [[ ██████  █████████████████████  ██  █████████ ████ ██████ ]],
         [[                                                                       ]],
       }
       
@@ -155,7 +157,7 @@ require("lazy").setup({
         dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
         dashboard.button("r", "  Recent files", ":Telescope oldfiles<CR>"),
         dashboard.button("g", "  Find text", ":Telescope live_grep<CR>"),
-        dashboard.button("e", "  File browser", ":Explore<CR>"),
+        dashboard.button("e", "  File browser", ":NvimTreeToggle<CR>"),
         dashboard.button("l", "  Lazy", ":Lazy<CR>"),
         dashboard.button("c", "  Config", ":e $MYVIMRC <CR>"),
         dashboard.button("q", "  Quit", ":qa<CR>"),
@@ -228,6 +230,31 @@ require("lazy").setup({
   -- nvim-web-devicons: File type icons
   { "nvim-tree/nvim-web-devicons", lazy = true },
 
+  -- nvim-tree: File tree with icons
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    cmd = { "NvimTreeToggle", "NvimTreeOpen" },
+    keys = { { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file tree" } },
+    config = function()
+      require("nvim-tree").setup({
+        renderer = {
+          icons = {
+            show = {
+              file = true,
+              folder = true,
+              folder_arrow = true,
+              git = true,
+            },
+          },
+        },
+        update_focused_file = {
+          enable = true,
+        },
+      })
+    end,
+  },
+
 
   -- ===========================================================================
   -- GROUP 2: FUZZY FINDER (Telescope)
@@ -269,12 +296,8 @@ require("lazy").setup({
               preview_width = 0.55,
               results_width = 0.8,
             },
-            vertical = {
-              mirror = false,
-            },
             width = 0.87,
             height = 0.80,
-            preview_cutoff = 120,
           },
           mappings = {
             -- Insert mode mappings
@@ -309,6 +332,15 @@ require("lazy").setup({
           find_files = { theme = "dropdown" },
           buffers = { theme = "dropdown" },
           oldfiles = { theme = "dropdown" },
+          live_grep = {
+            layout_strategy = "horizontal",
+            layout_config = {
+              horizontal = {
+                prompt_position = "top",
+                preview_width = 0.6,
+              },
+            },
+          },
         },
         extensions = {
           fzf = {
@@ -740,6 +772,17 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.cmd("highlight NonText ctermbg=NONE guibg=NONE")
   end,
 })
+
+-- Open nvim-tree when opening a directory
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   once = true,
+--   callback = function()
+--     local arg = vim.fn.argv(0)
+--     if arg and vim.fn.isdirectory(arg) == 1 then
+--       vim.schedule(require("nvim-tree.api").tree.open)
+--     end
+--   end,
+-- })
 
 
 -- =============================================================================
