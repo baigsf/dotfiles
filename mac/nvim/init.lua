@@ -133,11 +133,11 @@ require("lazy").setup({
   -- alpha-nvim: Startup dashboard with ASCII art
   {
     "goolord/alpha-nvim",
-    cmd = "Alpha",
+    event = "VimEnter",
     config = function()
+      local alpha = require("alpha")
       local dashboard = require("alpha.themes.dashboard")
-      
-      -- ASCII art header
+
       dashboard.section.header.val = {
         [[                                                                       ]],
         [[                                                                     ]],
@@ -150,8 +150,7 @@ require("lazy").setup({
         [[ ██████  █████████████████████  ██  █████████ ████ ██████ ]],
         [[                                                                       ]],
       }
-      
-      -- Dashboard buttons
+
       dashboard.section.buttons.val = {
         dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
         dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
@@ -162,19 +161,14 @@ require("lazy").setup({
         dashboard.button("c", "  Config", ":e $MYVIMRC <CR>"),
         dashboard.button("q", "  Quit", ":qa<CR>"),
       }
-      
-      dashboard.opts.opts.noautocmd = true
-      
-      -- Don't auto-show dashboard when opening a directory
-      local argv = vim.fn.argv()
-      if #argv > 0 then
-        local stat = vim.loop.fs_stat(argv[1])
-        if stat and stat.type == "directory" then
-          dashboard.opts.opts.autostart = false
-        end
-      end
-      
-      require("alpha").setup(dashboard.opts)
+
+      dashboard.opts.layout = {
+        dashboard.section.header,
+        dashboard.section.buttons,
+      }
+      dashboard.opts.opts = {}
+
+      alpha.setup(dashboard.opts)
     end,
   },
 
