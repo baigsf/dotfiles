@@ -306,9 +306,9 @@ require("lazy").setup({
           },
         },
         pickers = {
-          find_files = { theme = "dropdown", previewer = false },
-          buffers = { theme = "dropdown", previewer = false },
-          oldfiles = { theme = "dropdown", previewer = false },
+          find_files = { theme = "dropdown" },
+          buffers = { theme = "dropdown" },
+          oldfiles = { theme = "dropdown" },
         },
         extensions = {
           fzf = {
