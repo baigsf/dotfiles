@@ -210,7 +210,7 @@ local function setup()
   set_highlight("TelescopePromptTitle", { fg = colors.purple, bg = colors.bg })
   set_highlight("TelescopePreviewTitle", { fg = colors.purple, bg = colors.bg })
   set_highlight("TelescopeResultsTitle", { fg = colors.purple, bg = colors.bg })
-  set_highlight("TelescopeSelection", { fg = colors.bg, bg = colors.yellow })
+  set_highlight("TelescopeSelection", { fg = colors.red, bg = colors.yellow, bold = true })
   
   set_highlight("WhichKey", { fg = colors.yellow, bg = colors.bg })
   set_highlight("WhichKeyGroup", { fg = colors.blue, bg = colors.bg })
