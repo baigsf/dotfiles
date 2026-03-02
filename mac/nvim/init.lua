@@ -807,7 +807,7 @@ vim.api.nvim_create_autocmd('filetype', {
 -- SECTION 7: COLORSCHEME
 -- =============================================================================
 -- Change 'default' to any colorscheme (e.g., 'rose-pine') to use that theme
-vim.cmd.colorscheme("rose-pine") -- use 'rose-pine', 'gruvbox', etc. or 'default' for terminal colors
+vim.cmd.colorscheme("gruvpink") -- use 'rose-pine', 'gruvbox', etc. or 'default' for terminal colors
 
 -- =============================================================================
 -- END OF CONFIGURATION

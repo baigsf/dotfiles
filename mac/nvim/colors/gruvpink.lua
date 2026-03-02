@@ -3,7 +3,7 @@
 
 local colors = {
   bg = "NONE",
-  fg = "#e8e8e8",
+  fg = "#f5f5d0",
   black = "#13131D",
   bright_black = "#434353",
   red = "#EA90A8",
@@ -18,8 +18,8 @@ local colors = {
   bright_magenta = "#bfadbf",
   cyan = "#919ab7",
   bright_cyan = "#d2d7e3",
-  white = "#d0d0d0",
-  bright_white = "#f5f5f5",
+  white = "#f5f5d0",
+  bright_white = "#f5f5d0",
   surface2 = "#434353",
   surface1 = "#2a2a3d",
   surface0 = "#1e1e2d",
