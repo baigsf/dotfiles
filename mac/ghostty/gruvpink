@@ -6,9 +6,8 @@ window-padding-y = 15
 # macos-titlebar-style = hidden
 
 # Background & Opacity
-background-opacity = 0.5
-background-blur-radius = 35
-background = #131313
+background-opacity = 1
+background = #1a1a2e
 
 # Text Colors
 foreground = #f5f5d0
