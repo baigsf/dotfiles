@@ -461,8 +461,50 @@ require("lazy").setup({
         vim.lsp.config(server, { capabilities = capabilities })
         vim.lsp.enable(server)
       end
+
+      -- Fix: Ensure ts_ls handles both TypeScript and TSX correctly
+      vim.lsp.config("ts_ls", {
+        capabilities = capabilities,
+        settings = {
+          typescript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "all",
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+            },
+          },
+          javascript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "all",
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+            },
+          },
+        },
+      })
       
       vim.lsp.enable("lua_ls")
+
+      -- Ensure TypeScript files are detected correctly
+      vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+        pattern = { "*.ts", "*.tsx" },
+        callback = function(args)
+          local ext = vim.fn.fnamemodify(vim.fn.bufname(args.buf), ":e")
+          if ext == "tsx" then
+            vim.bo.filetype = "typescriptreact"
+          elseif ext == "ts" then
+            vim.bo.filetype = "typescript"
+          end
+        end,
+      })
     end,
   },
 
@@ -764,6 +806,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.cmd("highlight Normal ctermbg=NONE guibg=NONE")
     vim.cmd("highlight NormalFloat ctermbg=NONE guibg=NONE")
     vim.cmd("highlight NonText ctermbg=NONE guibg=NONE")
+    if package.loaded["nvim-tree"] then
+      require("nvim-tree").refresh()
+    end
   end,
 })
 
