@@ -456,7 +456,7 @@ require("lazy").setup({
       })
       
       -- Enable other language servers
-      local servers = { "pyright", "ts_ls", "rust_analyzer", "gopls", "clangd", "jsonls", "html", "cssls", "bashls" }
+      local servers = { "pyright", "ts_ls", "rust_analyzer", "gopls", "clangd", "jsonls", "html", "cssls", "bashls", "jdtls" }
       for _, server in ipairs(servers) do
         vim.lsp.config(server, { capabilities = capabilities })
         vim.lsp.enable(server)
@@ -628,6 +628,7 @@ require("lazy").setup({
           "rust", "go", "c", "cpp",
           "json", "html", "css", "scss",
           "bash", "markdown", "markdown_inline", "regex",
+          "java",
         },
         
         -- Syntax highlighting
