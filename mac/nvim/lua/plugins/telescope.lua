@@ -94,7 +94,7 @@ return {
       local fzf_lib_path = vim.fn.stdpath("data") .. "/lazy/telescope-fzf-native.nvim/build/libfzf.so"
       if vim.fn.filereadable(fzf_lib_path) == 0 then
         local fzf_path = vim.fn.stdpath("data") .. "/lazy/telescope-fzf-native.nvim"
-        vim.fn.system({ "make", "-C", fzf_path })
+        vim.fn.system({"make", "-C", fzf_path})
       end
 
       telescope.load_extension("fzf")

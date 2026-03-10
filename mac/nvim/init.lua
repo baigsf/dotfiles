@@ -1,8 +1,9 @@
 -- =============================================================================
 -- init.lua - Neovim Configuration Entry Point
 -- =============================================================================
+-- Modular LazyVim-inspired setup with custom colorschemes
 
--- Bootstrap lazy.nvim (plugin manager)
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -20,7 +21,7 @@ vim.opt.rtp:prepend(lazypath)
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
-require("config.colorscheme")
-
--- Load plugins
 require("plugins")
+
+-- Load colorscheme
+require("config.colorscheme")

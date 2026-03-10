@@ -2,7 +2,6 @@
 -- config/keymaps.lua - Keybindings
 -- =============================================================================
 
--- Leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
