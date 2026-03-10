@@ -12,6 +12,7 @@ alias neofetch='fastfetch'
 alias cat="bat"
 alias vf='nvim "$(fzf --preview "bat --color=always {}")"'
 alias cd='z'
+alias vim="nvim"
 
 # TAILSCALE
 ts() {
@@ -28,6 +29,7 @@ ts() {
 
 # FZF
 source <(fzf --zsh)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # STARSHIP
 eval "$(starship init zsh)"
@@ -40,3 +42,4 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # HUSH BREW
 export HOMEBREW_NO_ENV_HINTS=1
+
