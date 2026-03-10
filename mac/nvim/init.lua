@@ -763,9 +763,9 @@ require("lazy").setup({
         },
       })
       
-      -- Set colors for indent guides
-      vim.api.nvim_set_hl(0, "IblIndent", { fg = "#2a2a3d" })
-      vim.api.nvim_set_hl(0, "IblScope", { fg = "#434353" })
+      -- Set colors for indent guides (dimmed)
+      vim.api.nvim_set_hl(0, "IblIndent", { fg = "#181825" })
+      vim.api.nvim_set_hl(0, "IblScope", { fg = "#1e1e2e" })
     end,
   },
 
