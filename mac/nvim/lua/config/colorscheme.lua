@@ -2,4 +2,4 @@
 -- config/colorscheme.lua - Colorscheme
 -- =============================================================================
 
-vim.cmd.colorscheme("gruvpink")
+vim.cmd.colorscheme("gruvbox")

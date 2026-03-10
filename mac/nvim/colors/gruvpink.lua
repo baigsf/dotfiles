@@ -244,6 +244,20 @@ local function setup()
   set_highlight("NeoTreeGitModified", { fg = colors.pink })
   set_highlight("NeoTreeGitAdded", { fg = colors.green })
   set_highlight("NeoTreeGitDeleted", { fg = colors.mauve })
+
+  -- NvimTree highlights
+  set_highlight("NvimTreeNormal", { fg = colors.fg, bg = "NONE" })
+  set_highlight("NvimTreeNormalNC", { fg = colors.subtext0, bg = "NONE" })
+  set_highlight("NvimTreeFolderIcon", { fg = colors.blue })
+  set_highlight("NvimTreeFolderName", { fg = colors.fg })
+  set_highlight("NvimTreeOpenedFolderName", { fg = colors.fg, italic = true })
+  set_highlight("NvimTreeFileIcon", { fg = colors.subtext0 })
+  set_highlight("NvimTreeFileName", { fg = colors.fg })
+  set_highlight("NvimTreeGitDirty", { fg = colors.yellow })
+  set_highlight("NvimTreeGitStaged", { fg = colors.green })
+  set_highlight("NvimTreeGitNew", { fg = colors.green })
+  set_highlight("NvimTreeGitDeleted", { fg = colors.mauve })
+  set_highlight("NvimTreeRootFolder", { fg = colors.pink, bold = true })
   
   -- Cmp highlights
   set_highlight("CmpItemAbbr", { fg = colors.fg })
