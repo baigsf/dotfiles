@@ -28,29 +28,6 @@ return {
   },
 
   {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    event = { "BufReadPost", "BufNewFile" },
-    config = function()
-      require("ibl").setup({
-        indent = {
-          char = "│",
-          highlight = "IblIndent",
-        },
-        scope = {
-          enabled = true,
-          show_start = true,
-          show_end = false,
-          highlight = "IblScope",
-        },
-      })
-
-      vim.api.nvim_set_hl(0, "IblIndent", { fg = "#181825" })
-      vim.api.nvim_set_hl(0, "IblScope", { fg = "#1e1e2e" })
-    end,
-  },
-
-  {
     "karb94/neoscroll.nvim",
     event = { "BufReadPost", "BufNewFile" },
     config = function()

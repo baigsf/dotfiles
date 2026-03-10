@@ -86,7 +86,7 @@ return {
         },
       })
 
-      local servers = { "pyright", "ts_ls", "rust_analyzer", "gopls", "clangd", "jsonls", "html", "cssls", "bashls", "jdtls" }
+      local servers = { "pyright", "rust_analyzer", "gopls", "clangd", "jsonls", "html", "cssls", "bashls", "jdtls" }
       for _, server in ipairs(servers) do
         vim.lsp.config(server, { capabilities = capabilities })
         vim.lsp.enable(server)

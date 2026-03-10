@@ -36,10 +36,7 @@ return {
             horizontal = {
               prompt_position = "top",
               preview_width = 0.55,
-              results_width = 0.8,
             },
-            width = 0.87,
-            height = 0.80,
           },
           mappings = {
             i = {
@@ -65,28 +62,6 @@ return {
             "target/",
             "dist/",
             "build/",
-          },
-        },
-        pickers = {
-          find_files = { theme = "dropdown" },
-          buffers = { theme = "dropdown" },
-          oldfiles = { theme = "dropdown" },
-          live_grep = {
-            layout_strategy = "horizontal",
-            layout_config = {
-              horizontal = {
-                prompt_position = "top",
-                preview_width = 0.6,
-              },
-            },
-          },
-        },
-        extensions = {
-          fzf = {
-            fuzzy = true,
-            override_generic_sorter = true,
-            override_file_sorter = true,
-            case_mode = "smart_case",
           },
         },
       })

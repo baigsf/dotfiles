@@ -9,9 +9,6 @@ vim.g.maplocalleader = " "
 vim.keymap.set("n", "ZZ", ":wq<CR>", { silent = true, desc = "Save and quit" })
 vim.keymap.set("n", "ZQ", ":q!<CR>", { silent = true, desc = "Quit without saving" })
 
--- Dashboard
-vim.keymap.set("n", "<leader>h", "<cmd>Alpha<cr>", { desc = "Open dashboard" })
-
 -- Window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
@@ -31,6 +28,3 @@ vim.keymap.set("n", "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hls
 -- Leader commands - file operations
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save file" })
 vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
-
--- Leader commands - openers
-vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Open file browser" })
