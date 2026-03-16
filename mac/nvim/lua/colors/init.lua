@@ -14,6 +14,7 @@ local available_colors = {
   "tokyonight",
   "gruvbox",
   "gruvpink",
+  "nekomi",
 }
 
 function M.list()

@@ -37,4 +37,10 @@ return {
       })
     end,
   },
+
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
 }
