@@ -36,6 +36,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.wrap = false
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
+vim.opt.scroll = 15
 
 -- Backup & Files
 vim.opt.backup = false
