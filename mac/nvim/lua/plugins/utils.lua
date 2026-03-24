@@ -47,7 +47,6 @@ return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
     event = { "BufReadPost", "BufNewFile" },
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
       require("render-markdown").setup({})
     end,
