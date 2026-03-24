@@ -19,9 +19,6 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right" })
 
--- Insert mode - quick exit
-vim.keymap.set("i", "ee", "<Esc>", { desc = "Exit insert mode" })
-
 -- Normal mode - clear search highlight
 vim.keymap.set("n", "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
