@@ -1,10 +1,8 @@
 # Dotfiles
 
-This repository contains my personal configuration files (dotfiles) for both macOS and Linux systems.
+This repository contains my personal configuration files (dotfiles) for mac
 
 ## Installation
-
-### macOS
 
 ```bash
 # Copy all configs to ~/.config
