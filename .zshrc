@@ -6,7 +6,7 @@ alias la='eza -la --icons --color=always --group-directories-first'
 alias lt='eza -T --icons --color=always --group-directories-first'
 
 # ALIAS
-alias ff='fastfetch'
+alias ff="fastfetch"
 alias cat='bat'
 alias cd='z'
 alias vim='nvim'
