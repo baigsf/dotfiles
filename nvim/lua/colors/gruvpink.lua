@@ -32,6 +32,7 @@ local colors = {
   overlay2 = "#bcbcd4",
   overlay1 = "#a6b2c7",
   overlay0 = "#7c7ca8",
+  comment = "#7c7ca8",
 }
 
 local function set_highlight(group, opts)
@@ -98,7 +99,7 @@ local function setup()
   set_highlight("SpellRare", { undercurl = true, sp = colors.magenta })
   
   -- Syntax highlighting
-  set_highlight("Comment", { fg = colors.surface2, italic = true })
+  set_highlight("Comment", { fg = colors.comment, italic = true })
   set_highlight("Constant", { fg = colors.pink })
   set_highlight("String", { fg = colors.green })
   set_highlight("Character", { fg = colors.green })
@@ -127,7 +128,7 @@ local function setup()
   set_highlight("SpecialChar", { fg = colors.pink })
   set_highlight("Tag", { fg = colors.pink })
   set_highlight("Delimiter", { fg = colors.subtext0 })
-  set_highlight("SpecialComment", { fg = colors.surface2, italic = true })
+  set_highlight("SpecialComment", { fg = colors.comment, italic = true })
   set_highlight("Debug", { fg = colors.pink })
   set_highlight("Underlined", { underline = true })
   set_highlight("Ignore", { fg = colors.surface2 })
@@ -185,8 +186,8 @@ local function setup()
   set_highlight("@label", { fg = colors.mauve })
   set_highlight("@include", { fg = colors.lavender })
   set_highlight("@exception", { fg = colors.mauve })
-  set_highlight("@comment", { fg = colors.surface2, italic = true })
-  set_highlight("@comment.documentation", { fg = colors.surface2, italic = true })
+  set_highlight("@comment", { fg = colors.comment, italic = true })
+  set_highlight("@comment.documentation", { fg = colors.comment, italic = true })
   set_highlight("@punctuation.delimiter", { fg = colors.subtext0 })
   set_highlight("@punctuation.bracket", { fg = colors.subtext0 })
   set_highlight("@punctuation.special", { fg = colors.pink })
