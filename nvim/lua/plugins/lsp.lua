@@ -86,10 +86,24 @@ return {
         },
       })
 
-      local servers = { "pyright", "rust_analyzer", "gopls", "clangd", "jsonls", "html", "cssls", "bashls", "jdtls" }
-      for _, server in ipairs(servers) do
-        vim.lsp.config(server, { capabilities = capabilities })
-        vim.lsp.enable(server)
+      -- Map lspconfig server names to their executables. A server is only
+      -- enabled when its binary is on PATH, otherwise Neovim throws:
+      -- "Spawning language server ... failed ... not installed, missing from PATH"
+      local servers = {
+        pyright = "pyright-langserver",
+        rust_analyzer = "rust_analyzer",
+        gopls = "gopls",
+        clangd = "clangd",
+        jsonls = "vscode-json-languageserver",
+        html = "vscode-html-languageserver",
+        cssls = "vscode-css-languageserver",
+        bashls = "bash-language-server",
+      }
+      for server, binary in pairs(servers) do
+        if vim.fn.executable(binary) == 1 then
+          vim.lsp.config(server, { capabilities = capabilities })
+          vim.lsp.enable(server)
+        end
       end
 
       vim.lsp.config("ts_ls", {
@@ -120,7 +134,21 @@ return {
         },
       })
 
-      vim.lsp.enable("lua_ls")
+      if vim.fn.executable("lua-language-server") == 1 then
+        vim.lsp.enable("lua_ls")
+      end
+
+      if vim.fn.executable("typescript-language-server") == 1 then
+        vim.lsp.enable("ts_ls")
+      end
+
+      -- jdtls needs both the `jdtls` binary AND a Java runtime (17+).
+      -- Silently skipped when missing. To enable later:
+      -- `:MasonInstall jdtls` + install a JDK, e.g. `sudo pacman -S jdk17-openjdk`.
+      if vim.fn.executable("jdtls") == 1 and vim.fn.executable("java") == 1 then
+        vim.lsp.config("jdtls", { capabilities = capabilities })
+        vim.lsp.enable("jdtls")
+      end
 
       vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
         pattern = { "*.ts", "*.tsx" },
